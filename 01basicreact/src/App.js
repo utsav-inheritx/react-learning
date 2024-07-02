@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import './App.css';
 
 
+
 function MyButton() {
-  var [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   function handleClick() {
     setCount(count + 1);
@@ -17,7 +18,7 @@ function MyButton() {
   );
 }
 
-export default function MyApp() {
+export function MyApp() {
   return (
     <div>
       <MyButton />
@@ -26,17 +27,19 @@ export default function MyApp() {
 }
 
 
+
 export function AboutPage() {
   return (
     <div>
-      <h1>Team India</h1>
+      <h2>Team India</h2>
       <p>Hello there.<br />What's your feeling on winning the T20 World Cup?</p>
     </div>
   );
 }
 
 
-const user = {
+
+const user1 = {
   name: 'Inheritx Solutions',
   imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
   imageSize: 100,
@@ -45,19 +48,20 @@ const user = {
 export function Profile() {
   return (
     <>
-      <h1>{user.name}</h1>
+      <h2>{user1.name}</h2>
       <img
         className="avatar"
-        src={user.imageUrl}
-        alt={'Photo of ' + user.name}
+        src={user1.imageUrl}
+        alt={'Photo of ' + user1.name}
         style={{
-          width: user.imageSize,
-          height: user.imageSize
+          width: user1.imageSize,
+          height: user1.imageSize
         }}
       />
     </>
   );
 }
+
 
 
 const products = [
@@ -82,5 +86,25 @@ export function ShoppingList() {
     <ul>{listItems}</ul>
   );
 }
+
+
+
+const user = {
+  firstName: 'Rohit',
+  lastName: 'Sharma'
+};
+
+export function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+export function Greeting() {
+  return (
+    <h2>
+      Hello, {formatName(user)}!
+    </h2>
+  );
+}
+
 
 
