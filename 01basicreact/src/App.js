@@ -1,5 +1,4 @@
-// App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 
@@ -108,3 +107,38 @@ export function Greeting() {
 
 
 
+export function Clock() {
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    const timerID = setInterval(() => setDate(new Date()), 1000);
+
+    return () => clearInterval(timerID);
+  }, []);
+
+  return (
+    <div>
+      <h1>Hello, Rohirat</h1>
+      <h2>Time is {date.toLocaleTimeString()}.</h2>
+    </div>
+  );
+}
+
+
+
+export function Counter() {
+  const [count, setCount] = useState(0);
+  const [calculation, setCalculation] = useState(0);
+
+  useEffect(() => {
+    setCalculation(() => count * 2);
+  }, [count]);
+
+  return (
+    <>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount((c) => c + 1)}>Click me</button>
+      <p>Calculation: {calculation}</p>
+    </>
+  );
+}
