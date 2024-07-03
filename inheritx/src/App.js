@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-
+import SubComponent from './components/SubComponent';
 
 function MyButton() {
   const [count, setCount] = useState(0);
@@ -25,18 +25,15 @@ export function MyApp() {
   );
 }
 
-
-
 export function AboutPage() {
   return (
     <div>
       <h2>Team India</h2>
       <p>Hello there.<br />What's your feeling on winning the T20 World Cup?</p>
+      <SubComponent/>
     </div>
   );
 }
-
-
 
 const user1 = {
   name: 'Inheritx Solutions',
@@ -61,8 +58,6 @@ export function Profile() {
   );
 }
 
-
-
 const products = [
   { title: 'Mango', isFruit: true, id: 1 },
   { title: 'Banana', isFruit: true, id: 2 },
@@ -86,11 +81,9 @@ export function ShoppingList() {
   );
 }
 
-
-
 const user = {
-  firstName: 'Aussies',
-  lastName: 'Kangaroos'
+  firstName: 'Rohit',
+  lastName: 'Sharma'
 };
 
 export function formatName(user) {
@@ -105,8 +98,6 @@ export function Greeting() {
   );
 }
 
-
-
 export function Clock() {
   const [date, setDate] = useState(new Date());
 
@@ -118,13 +109,11 @@ export function Clock() {
 
   return (
     <div>
-      <h1>Indian Standard</h1>
-      <h2>Time is {date.toLocaleTimeString()}:</h2>
+      <h1>Hello, Aushees!</h1>
+      <h2>IST is {date.toLocaleTimeString()}.</h2>
     </div>
   );
 }
-
-
 
 export function Counter() {
   const [count, setCount] = useState(0);
@@ -132,12 +121,12 @@ export function Counter() {
 
   useEffect(() => {
     setCalculation(() => count * 2);
-  }, [count]);
+  }, [count]); // <- add the count variable here
 
   return (
     <>
       <p>Count: {count}</p>
-      <button onClick={() => setCount((c) => c + 1)}>Click me</button>
+      <button onClick={() => setCount((c) => c + 1)}>+</button>
       <p>Calculation: {calculation}</p>
     </>
   );

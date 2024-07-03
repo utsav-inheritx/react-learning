@@ -10,11 +10,11 @@ root.render(
     <div>
       <MyApp />
       <AboutPage />
-      <Counter /> 
       <Profile />
       <ShoppingList />
       <Greeting />
       <Clock />
+      <Counter />      
     </div>
   </React.StrictMode>
 );
