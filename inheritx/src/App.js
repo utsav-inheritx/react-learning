@@ -15,19 +15,19 @@ function App() {
     {
       id: 'e1',
       title: 'School Fee',
-      price: '$2500',
+      price: '2500',
       date: new Date(2022, 5, 12)
     },
     {
       id: 'e2',
       title: 'Tution Fee',
-      price: "$300",
+      price: "300",
       date: new Date(2022, 1, 12)
     },
     {
       id: 'e3',
       title: 'House Rent',
-      price: "$150",
+      price: "150",
       date: new Date(2021, 7, 12)
     }
   ];
