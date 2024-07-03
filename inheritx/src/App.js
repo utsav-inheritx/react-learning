@@ -119,7 +119,7 @@ export function Clock() {
   return (
     <div>
       <h1>Indian Standard</h1>
-      <h2>Time is {date.toLocaleTimeString()}.</h2>
+      <h2>Time is {date.toLocaleTimeString()}:</h2>
     </div>
   );
 }
