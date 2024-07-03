@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
-import ExpenseItem from './components/ExpesneItem';
+import ExpenseItem from './components/ExpenseItem';
 import ExpenseItem1 from './components/ExpenseItem1';
 
 
