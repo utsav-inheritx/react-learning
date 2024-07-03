@@ -5,7 +5,7 @@ import ExpenseItem from './components/ExpesneItem';
 import ExpenseItem1 from './components/ExpenseItem1';
 
 
-function App() {
+const App = () => {
 
   var expenseDate = new Date(2024, 7, 31);
   var expenseTitle = "Transportation Fees";

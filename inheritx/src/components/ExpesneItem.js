@@ -1,7 +1,7 @@
 import './ExpenseItem.css';
 import React from 'react';
 
-function ExpenseItem() {
+const ExpenseItem = () => {
   let currentDate = new Date();
   let month = currentDate.toLocaleString('default', { month: 'long' });
   let day = currentDate.getDate();
