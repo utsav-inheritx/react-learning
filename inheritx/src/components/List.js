@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Fruit(props) {
+const Fruit = (props) => {
     return <li>{props.name}</li>;
 }
 
@@ -17,7 +17,7 @@ function Fruit(props) {
 //     );
 // }
 
-function Market() {
+const Market = () => {
     const fruits = [
         { id: 1, name: 'Mango' },
         { id: 2, name: 'Banana' },
