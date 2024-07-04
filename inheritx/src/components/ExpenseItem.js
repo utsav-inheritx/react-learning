@@ -12,7 +12,7 @@ const ExpenseItem = () => {
 
   return (
     <div className='expense-item'>
-      <div>{formattedDate}</div>
+      <div>{formattedDate}</div> 
       <div className='expense-item-des'>
         <h2>{ title }</h2>
         <div className='expense-item-price'>$100</div>
