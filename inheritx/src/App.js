@@ -3,7 +3,10 @@ import './App.css';
 
 import ExpenseItem from './components/ExpenseItem';
 import ExpenseItem1 from './components/ExpenseItem1';
-
+import Shoot, { FootBall } from './components/Shoot';
+import Goal from './components/IfTernaryCondition';
+import Garage from './components/LogicalOperator';
+import Market from './components/List';
 
 const App = () => {
 
@@ -32,18 +35,29 @@ const App = () => {
     }
   ];
 
+  const cars = ['Ford', 'BMW', 'Audi'];
+
   return (
     <div>
       <h2>Expense</h2>
-      <ExpenseItem/>
+      <ExpenseItem />
 
       <ExpenseItem1
-        date = { expenseDate }
-        title = { expenseTitle }
-        amount = { amount } >
+        date={expenseDate}
+        title={expenseTitle}
+        amount={amount} >
       </ExpenseItem1>
 
-      <ExpenseItem1
+      {expenses.map(expense => (
+        <ExpenseItem1
+          key={expense.id}
+          date={expense.date}
+          title={expense.title}
+          amount={expense.price}
+        />
+      ))}
+
+      {/* <ExpenseItem1
         date = { expenses[0].date }
         title = { expenses[0].title }
         amount = { expenses[0].price } >
@@ -57,8 +71,15 @@ const App = () => {
         date = { expenses[2].date }
         title = { expenses[2].title }
         amount = { expenses[2].price } >
-      </ExpenseItem1>
+      </ExpenseItem1> */}
 
+      <Shoot />
+      <br /><br />
+      <FootBall />
+      <Goal isGoal={true} />
+      <Goal isGoal={false} />
+      <Garage cars={cars} />
+      <Market />
     </div>
   );
 }

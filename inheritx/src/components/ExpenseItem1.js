@@ -11,7 +11,7 @@ const ExpenseItem1 = (props) => {
     <div className='expense-item'>
       {/* <div>{ props.date.toISOString() }</div> */}
       <div>
-          <div>{`${day} ${month} ${year}`}</div>
+        <div>{`${day} ${month} ${year}`}</div>
       </div>
       <div className='expense-item-des'>
         <h2>{props.title}</h2>
