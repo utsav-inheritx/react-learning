@@ -85,7 +85,7 @@ const App = () => {
       <MyButton/>
       <FavrioteColor/>
       <Vehicle/>
-      <Counter/>'
+      <Counter/>
       <ConditionalEffectComponent/>
     </div>
   );
