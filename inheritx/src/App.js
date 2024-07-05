@@ -7,6 +7,8 @@ import Shoot, { FootBall } from './components/Shoot';
 import Goal from './components/IfTernaryCondition';
 import Garage from './components/LogicalOperator';
 import Market from './components/List';
+import MyButton, {FavrioteColor, Vehicle} from './components/UseState';
+import Counter, {ConditionalEffectComponent} from './components/UseEffect';
 
 const App = () => {
 
@@ -80,6 +82,11 @@ const App = () => {
       <Goal isGoal={false} />
       <Garage cars={cars} />
       <Market />
+      <MyButton/>
+      <FavrioteColor/>
+      <Vehicle/>
+      <Counter/>'
+      <ConditionalEffectComponent/>
     </div>
   );
 }
