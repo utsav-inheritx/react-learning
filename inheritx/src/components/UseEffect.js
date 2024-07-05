@@ -1,33 +1,33 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
-const Counter = () => {
+export const Counter = () => {
     const [count, setCount] = useState(0);
     const [calculation, setCalculation] = useState(0);
 
     useEffect(() => {
-        setCalculation(() => count*count);
+        setCalculation(() => count * count);
     }, [count]);
 
-    return(
+    return (
         <>
             <p>Count: {count}</p>
-            <button onClick={() => setCount((c) => c+1)}>+++</button>
+            <button onClick={() => setCount((prevCount) => prevCount + 1)}> +++ </button>
             <p>Calculation: {calculation}</p>
         </>
     );
 }
 
 
-const ConditionalEffectComponent = () => {
+export const ConditionalEffectComponent = () => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-        if(isMounted){
+        if (isMounted) {
             console.log("Component Mounted");
         }
     }, [isMounted]);
 
-    return(
+    return (
         <>
             <button onClick={() => setIsMounted(!isMounted)}>
                 {isMounted ? "Unmount" : "Mount"}
@@ -35,7 +35,3 @@ const ConditionalEffectComponent = () => {
         </>
     );
 }
-
-
-export default Counter;
-export {ConditionalEffectComponent};

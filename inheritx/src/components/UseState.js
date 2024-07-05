@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 
 // Read State
-const MyButton = () => {
+export const MyButton = () => {
     const [count, setCount] = useState(0);
 
     const handleClick = () => {
@@ -18,7 +18,7 @@ const MyButton = () => {
 
 
 // Update State
-const FavrioteColor = () => {
+export const FavrioteColor = () => {
     const [color, setColor] = useState('red');
 
     return (
@@ -32,7 +32,7 @@ const FavrioteColor = () => {
 }
 
 
-const Vehicle = () => {
+export const Vehicle = () => {
     // Multiple State Hooks
     // const [brand, setBrand] = useState("Tata");
     // const [model, setModel] = useState("Safari");
@@ -61,7 +61,3 @@ const Vehicle = () => {
         </>
     );
 }
-
-
-export default MyButton;
-export { FavrioteColor, Vehicle };
