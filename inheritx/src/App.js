@@ -1,47 +1,50 @@
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import ExpenseItem from './components/ExpenseItem';
-import ExpenseItem1 from './components/ExpenseItem1';
-import {Shoot, FootBall} from './components/Shoot';
-import Goal from './components/IfTernaryCondition';
-import Garage from './components/LogicalOperator';
-import Market from './components/List';
-import {MyButton, FavrioteColor, Vehicle} from './components/UseState';
-import {Counter, ConditionalEffectComponent} from './components/UseEffect';
+
+// import ExpenseItem from './components/ExpenseItem';
+// import ExpenseItem1 from './components/ExpenseItem1';
+// import {Shoot, FootBall} from './components/Shoot';
+// import Goal from './components/IfTernaryCondition';
+// import Garage from './components/LogicalOperator';
+// import Market from './components/List';
+// import {MyButton, FavrioteColor, Vehicle} from './components/UseState';
+// import {Counter, ConditionalEffectComponent} from './components/UseEffect';
+import BasicForm from './components/BasicForm';
 
 const App = () => {
 
-  var expenseDate = new Date(2024, 7, 31);
-  var expenseTitle = "Transportation Fees";
-  var amount = 1500;
+  // var expenseDate = new Date(2024, 7, 31);
+  // var expenseTitle = "Transportation Fees";
+  // var amount = 1500;
 
-  let expenses = [
-    {
-      id: 'e1',
-      title: 'School Fee',
-      price: '2500',
-      date: new Date(2022, 5, 12)
-    },
-    {
-      id: 'e2',
-      title: 'Tution Fee',
-      price: "300",
-      date: new Date(2022, 1, 12)
-    },
-    {
-      id: 'e3',
-      title: 'House Rent',
-      price: "150",
-      date: new Date(2021, 7, 12)
-    }
-  ];
+  // let expenses = [
+  //   {
+  //     id: 'e1',
+  //     title: 'School Fee',
+  //     price: '2500',
+  //     date: new Date(2022, 5, 12)
+  //   },
+  //   {
+  //     id: 'e2',
+  //     title: 'Tution Fee',
+  //     price: "300",
+  //     date: new Date(2022, 1, 12)
+  //   },
+  //   {
+  //     id: 'e3',
+  //     title: 'House Rent',
+  //     price: "150",
+  //     date: new Date(2021, 7, 12)
+  //   }
+  // ];
 
-  const cars = ['Ford', 'BMW', 'Audi'];
+  // const cars = ['Ford', 'BMW', 'Audi'];
 
   return (
     <div>
-      <h2>Expense</h2>
+      {/* <h2>Expense</h2>
       <ExpenseItem />
 
       <ExpenseItem1
@@ -57,7 +60,7 @@ const App = () => {
           title={expense.title}
           amount={expense.price}
         />
-      ))}
+      ))} */}
 
       {/* <ExpenseItem1
         date = { expenses[0].date }
@@ -75,7 +78,7 @@ const App = () => {
         amount = { expenses[2].price } >
       </ExpenseItem1> */}
 
-      <Shoot />
+      {/* <Shoot />
       <br /><br />
       <FootBall />
       <Goal isGoal={true} />
@@ -86,7 +89,8 @@ const App = () => {
       <FavrioteColor/>
       <Vehicle/>
       <Counter/>
-      <ConditionalEffectComponent/>
+      <ConditionalEffectComponent/> */}
+      <BasicForm/>
     </div>
   );
 }
