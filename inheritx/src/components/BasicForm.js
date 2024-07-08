@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './BasicForm.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -61,9 +61,25 @@ const BasicForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (validateForm()) {
-            console.log(formData);
+            // Get the existing form data array from local storage
+            const existingData = JSON.parse(localStorage.getItem('showData')) || [];
+            // Add the new form data to the array
+            existingData.push({ ...formData, errors: {} });
+            // Save the updated array back to local storage
+            localStorage.setItem('showData', JSON.stringify(existingData));
+            alert("Data inserted successfully");
+            // Clear the form
+            setFormData({
+                firstName: "",
+                lastName: "",
+                userName: "",
+                email: "",
+                mobileNumber: "",
+                password: "",
+                errors: {},
+            });
         } else {
-            // alert("Please fill the form");
+            alert("Please fill the form");
         }
     };
 
@@ -92,7 +108,7 @@ const BasicForm = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formUserName">
                     <Form.Label>User Name</Form.Label>
-                    <Form.Control type="text" name="userName" placeholder="Enter User Name" value={formData.userName} onChange={handleChange} />
+                    <Form.Control type="text" name="userName" placeholder="Enter UserName" value={formData.userName} onChange={handleChange} />
                     {formData.errors.userName && (
                         <p style={{ color: "red" }}>{formData.errors.userName}</p>
                     )}
@@ -111,13 +127,6 @@ const BasicForm = () => {
                         <p style={{ color: "red" }}>{formData.errors.mobileNumber}</p>
                     )}
                 </Form.Group>
-                {/* <Form.Group className="mb-3" controlId="formPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name="password" placeholder="Enter Password" value={formData.password} onChange={handleChange}/>
-                    {formData.errors.password && (
-                        <p style={{ color: "red" }}>{formData.errors.password}</p>
-                    )}
-                </Form.Group> */}
                 <Form.Group className="mb-3" controlId="formPassword">
                     <Form.Label>Password</Form.Label>
                     <InputGroup>
