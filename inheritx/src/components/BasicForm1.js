@@ -9,7 +9,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Typography from '@mui/material/Typography';
 import { Container, Box } from '@mui/material';
 
-const BasicForm = () => {
+const BasicForm1 = () => {
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -113,4 +113,4 @@ const BasicForm = () => {
     );
 }
 
-export default BasicForm;
+export default BasicForm1;

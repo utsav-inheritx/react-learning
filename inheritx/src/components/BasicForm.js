@@ -23,7 +23,7 @@ const BasicForm = () => {
     const [storedData, setStoredData] = useState([]);
 
     useEffect(() => {
-        // Fetch data from local storage on component mount
+        // Fetch data
         const data = JSON.parse(localStorage.getItem('showData')) || [];
         setStoredData(data);
     }, []);
@@ -90,11 +90,12 @@ const BasicForm = () => {
         }
     };
 
-    // const handleDelete = (index) => {
-    //     const updatedData = storedData.filter((_, i) => i !== index);
-    //     localStorage.setItem('showData', JSON.stringify(updatedData));
-    //     setStoredData(updatedData);
-    // };
+    const handleDelete = (index) => {
+        const updatedData = storedData.filter((_, i) => i !== index);
+        localStorage.setItem('showData', JSON.stringify(updatedData));
+        alert("Data deleted successfully");
+        setStoredData(updatedData);
+    };
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -102,7 +103,7 @@ const BasicForm = () => {
 
     return (
         <div>
-            <h1>Form</h1>
+            <h1></h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formFirstName">
                     <Form.Label>First Name</Form.Label>
@@ -151,12 +152,12 @@ const BasicForm = () => {
                         <p style={{ color: "red" }}>{formData.errors.password}</p>
                     )}
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="outline-primary" type="submit">
                     Submit
                 </Button>
             </Form>
 
-            <h2>Stored Data</h2>
+            <h2></h2>
             {storedData.length > 0 ? (
                 <Table striped bordered hover>
                     <thead>
@@ -165,9 +166,9 @@ const BasicForm = () => {
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>User Name</th>
-                            <th>Email</th>
+                            <th>Email Id</th>
                             <th>Mobile Number</th>
-                            {/* <th>Actions</th> */}
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -179,9 +180,9 @@ const BasicForm = () => {
                                 <td>{data.userName}</td>
                                 <td>{data.email}</td>
                                 <td>{data.mobileNumber}</td>
-                                {/* <td>
-                                    <Button variant="danger" onClick={() => handleDelete(index)}>Delete</Button>
-                                </td> */}
+                                <td>
+                                    <Button variant="outline-danger" onClick={() => handleDelete(index)}>Delete</Button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
