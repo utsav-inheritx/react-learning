@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import {MyButton, FavrioteColor, Vehicle} from './components/UseState';
 // import {Counter, ConditionalEffectComponent} from './components/UseEffect';
 import BasicForm from './components/BasicForm';
+// import BasicForm1 from './components/BasicForm1';
 
 const App = () => {
 

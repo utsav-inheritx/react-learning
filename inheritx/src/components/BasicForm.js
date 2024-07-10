@@ -4,11 +4,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Table from 'react-bootstrap/Table';
+import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BasicForm = () => {
-    
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -21,14 +23,14 @@ const BasicForm = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [storedData, setStoredData] = useState([]);
+    const [editData, setEditData] = useState(null);
+    const [viewData, setViewData] = useState(null);
 
     useEffect(() => {
-        // Fetch data
         const data = JSON.parse(localStorage.getItem('showData')) || [];
         setStoredData(data);
     }, []);
 
-    // Handle Change Event
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -71,11 +73,15 @@ const BasicForm = () => {
         event.preventDefault();
         if (validateForm()) {
             const existingData = JSON.parse(localStorage.getItem('showData')) || [];
-            existingData.push({ ...formData, errors: {} });
+            if (editData !== null) {
+                existingData[editData] = { ...formData, errors: {} };
+                toast.warning("Data updated successfully");
+            } else {
+                existingData.push({ ...formData, errors: {} });
+                toast.success("Data inserted successfully");
+            }
             localStorage.setItem('showData', JSON.stringify(existingData));
-            alert("Data inserted successfully");
-            setStoredData(existingData); 
-            // Clear the form
+            setStoredData(existingData);
             setFormData({
                 firstName: "",
                 lastName: "",
@@ -86,14 +92,25 @@ const BasicForm = () => {
                 errors: {},
             });
         } else {
-            alert("Please fill the form");
+            toast.error("Please fill the form correctly");
         }
+    };
+
+    const handleEdit = (index) => {
+        const data = storedData[index];
+        setFormData(data);
+        setEditData(index);
+    };
+
+    const handleView = (index) => {
+        const data = storedData[index];
+        setViewData(data);
     };
 
     const handleDelete = (index) => {
         const updatedData = storedData.filter((_, i) => i !== index);
         localStorage.setItem('showData', JSON.stringify(updatedData));
-        alert("Data deleted successfully");
+        toast.error("Data deleted successfully");
         setStoredData(updatedData);
     };
 
@@ -101,9 +118,13 @@ const BasicForm = () => {
         setShowPassword(!showPassword);
     };
 
+    const closeViewModal = () => {
+        setViewData(null);
+    };
+
     return (
         <div>
-            <h1></h1>
+            <h1>Form</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formFirstName">
                     <Form.Label>First Name</Form.Label>
@@ -157,7 +178,9 @@ const BasicForm = () => {
                 </Button>
             </Form>
 
-            <h2></h2>
+            <ToastContainer />
+
+            <h2>Database</h2>
             {storedData.length > 0 ? (
                 <Table striped bordered hover>
                     <thead>
@@ -181,6 +204,8 @@ const BasicForm = () => {
                                 <td>{data.email}</td>
                                 <td>{data.mobileNumber}</td>
                                 <td>
+                                    <Button variant="outline-secondary" onClick={() => handleEdit(index)}>Edit</Button>{' '}
+                                    <Button variant="outline-primary" onClick={() => handleView(index)}>View</Button>{' '}
                                     <Button variant="outline-danger" onClick={() => handleDelete(index)}>Delete</Button>
                                 </td>
                             </tr>
@@ -190,6 +215,27 @@ const BasicForm = () => {
             ) : (
                 <p>No data available</p>
             )}
+
+            <Modal show={viewData !== null} onHide={closeViewModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>View Data</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {viewData && (
+                        <div>
+                            <p><strong>First Name:</strong> {viewData.firstName}</p>
+                            <p><strong>Last Name:</strong> {viewData.lastName}</p>
+                            <p><strong>User Name:</strong> {viewData.userName}</p>
+                            <p><strong>Email Id:</strong> {viewData.email}</p>
+                            <p><strong>Mobile Number:</strong> {viewData.mobileNumber}</p>
+                            <p><strong>Password:</strong> {viewData.password}</p>
+                        </div>
+                    )}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="outline-secondary" onClick={closeViewModal}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }
