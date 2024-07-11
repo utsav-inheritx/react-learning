@@ -8,13 +8,13 @@ const Navbar = () => {
                 <ul style={{ listStyleType: "none" }}>
                     <li>
                         <Link to="/">Home</Link>
-                    </li><br/>
+                    </li><br />
                     <li>
                         <Link to="/about">About Us</Link>
-                    </li><br/>
+                    </li><br />
                     <li>
                         <Link to="/contact">Contact Us</Link>
-                      </li><br/>
+                    </li><br />
                 </ul>
 
                 {/* <ul>

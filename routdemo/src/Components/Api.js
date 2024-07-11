@@ -7,10 +7,11 @@ function Api() {
     useEffect(() => {
       axios.get('https://jsonplaceholder.typicode.com/users')
         .then(response => {
+            console.log(response.data);
             setUsers(response.data);
         })
         .catch(error => {
-          console.error(error);
+          console.error(error); 
         });
     }, []);
   
