@@ -25,7 +25,7 @@ const BasicForm = () => {
     const [storedData, setStoredData] = useState([]);
     const [editData, setEditData] = useState(null);
     const [viewData, setViewData] = useState(null);
-
+    
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('showData')) || [];
         setStoredData(data);
