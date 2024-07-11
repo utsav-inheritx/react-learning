@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <div>
             <nav>
-                <ul>
+                <ul style={{ listStyleType: "none" }}>
                     <li>
                         <Link to="/">Home</Link>
                     </li><br/>
@@ -14,7 +14,7 @@ const Navbar = () => {
                     </li><br/>
                     <li>
                         <Link to="/contact">Contact Us</Link>
-                    </li><br/>
+                      </li><br/>
                 </ul>
 
                 {/* <ul>
