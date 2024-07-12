@@ -25,7 +25,7 @@ const BasicForm = () => {
     const [storedData, setStoredData] = useState([]);
     const [editData, setEditData] = useState(null);
     const [viewData, setViewData] = useState(null);
-    
+
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('showData')) || [];
         setStoredData(data);
@@ -40,7 +40,7 @@ const BasicForm = () => {
         const errors = {};
 
         if (!formData.firstName) {
-            errors.firstName = "First Name is required";
+            errors.firstName = "First Name is required";    
         }
 
         if (!formData.lastName) {
@@ -72,16 +72,21 @@ const BasicForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (validateForm()) {
+
             const existingData = JSON.parse(localStorage.getItem('showData')) || [];
+
             if (editData !== null) {
                 existingData[editData] = { ...formData, errors: {} };
                 toast.warning("Data updated successfully");
             } else {
+
                 existingData.push({ ...formData, errors: {} });
                 toast.success("Data inserted successfully");
             }
+
             localStorage.setItem('showData', JSON.stringify(existingData));
             setStoredData(existingData);
+
             setFormData({
                 firstName: "",
                 lastName: "",
