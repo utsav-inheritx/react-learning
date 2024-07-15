@@ -17,7 +17,7 @@ function App() {
           <Route path='/about' element={<AboutUs/>}/>
           <Route path='/contact' element={<ContactUs/>}/>
         </Routes> */}
-        <Api/> 
+        {/* <Api/>  */}
         <hr/>
         <AxiosApi/>
     </div>
