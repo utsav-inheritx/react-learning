@@ -13,7 +13,7 @@ const AxiosApi = () => {
     // List Data
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await client.get('?_limit=500'); 
+            const response = await client.get('?_limit=500');
             setPosts(response.data);
         };
         fetchPosts();
@@ -57,12 +57,7 @@ const AxiosApi = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
+                <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
                 <button type="submit">{editingPost ? "Update Post" : "Add Post"}</button>
             </form>
             <ul style={{ textAlign: "left", listStyleType: "none" }}>
