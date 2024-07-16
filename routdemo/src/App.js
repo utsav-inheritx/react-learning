@@ -6,7 +6,8 @@ import ContactUs from './Components/ContactUs';
 import { Route, Routes } from 'react-router-dom';
 import Api from './Components/Api';
 import AxiosApi from './Components/AxiosApi';
-
+import UserProfileForm from './Components/FormikForm'
+import UserProfileFormWithHook from './Components/FormikForm1'
 
 function App() {
   return (
@@ -19,7 +20,12 @@ function App() {
         </Routes> */}
         {/* <Api/>  */}
         <hr/>
-        <AxiosApi/>
+        {/* <AxiosApi/> */}
+
+        {/* <UserProfileForm/> */}
+
+        <UserProfileFormWithHook/>
+
     </div>
   );
 }
