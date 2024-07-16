@@ -12,7 +12,7 @@ const UserProfileForm1 = () => {
         },
 
         validationSchema: Yup.object({
-            name: Yup.string().required('Enter your Name').min(3, 'Name should be be at least 2 characters long'),
+            name: Yup.string().required('Enter your Name').min(3, 'Name should be be at least 3 characters long'),
             email: Yup.string().email('Invalid email Format').required('Enter your Email'),
             bio: Yup.string().max(300, 'Bio must be 300 characters'),
         }),
