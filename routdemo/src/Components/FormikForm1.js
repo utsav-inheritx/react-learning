@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 
-const UserProfileFormWithHook  = () => {
+const UserProfileFormWithHook = () => {
 
     const formik = useFormik({
         initialValues: {
@@ -28,25 +28,25 @@ const UserProfileFormWithHook  = () => {
             <form onSubmit={formik.handleSubmit}>
                 <div>
                     <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.name}/>
+                    <input type="text" id="name" name="name" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.name} />
                     {formik.touched.name && formik.errors.name ? (
                         <div className="error">{formik.errors.name}</div>
                     ) : null}
-                </div><br/>
+                </div><br />
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email}/>
+                    <input type="email" id="email" name="email" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
                     {formik.touched.email && formik.errors.email ? (
                         <div className="error">{formik.errors.email}</div>
                     ) : null}
-                </div><br/>
+                </div><br />
                 <div>
                     <label htmlFor="bio">Bio:</label>
-                    <textarea id="bio" name="bio" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.bio}/>
+                    <textarea id="bio" name="bio" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.bio} />
                     {formik.touched.bio && formik.errors.bio ? (
                         <div className="error">{formik.errors.bio}</div>
                     ) : null}
-                </div><br/>
+                </div><br />
 
                 <button type="submit">Submit</button>
             </form>

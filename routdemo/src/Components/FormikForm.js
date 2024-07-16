@@ -24,23 +24,23 @@ const UserProfileForm = () => {
     return (
         <div>
             <h1>Customer Profile</h1>
-            <Formik 
-                initialValues={initialValues} 
-                validationSchema={validationSchema} 
+            <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
                 onSubmit={onSubmit}>
                 <Form>
                     <div>
                         <label htmlFor="name">Name:</label>
                         <Field type="text" id="name" name="name" />
                         <ErrorMessage name="name" component="div" className="error" />
-                    </div><br/>
+                    </div><br />
                     <div>
                         <label htmlFor="email">Email:</label>
                         <Field type="email" id="email" name="email" />
                         <ErrorMessage name="email" component="div" className="error" />
-                    </div><br/>
+                    </div><br />
                     <div>
-                        <label htmlFor="bio">Bio:</label>       
+                        <label htmlFor="bio">Bio:</label>
                         <Field as="textarea" id="bio" name="bio" />
                         <ErrorMessage name="bio" component="div" className="error" />
                     </div>
