@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,9 +11,23 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const App = () => {
+const TodoList1 = () => {
     const [userInput, setUserInput] = useState("");
     const [list, setList] = useState([]);
+
+    useEffect(() => {
+        axios.get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+            .then(response => {
+                const initialList = response.data.map(item => ({
+                    id: item.id,
+                    value: item.title
+                }));
+                setList(initialList);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
 
     const updateInput = (value) => {
         setUserInput(value);
@@ -21,41 +36,65 @@ const App = () => {
     const addItem = () => {
         if (userInput !== "") {
             const userInputItem = {
-                id: Math.random(),
-                value: userInput,
+                title: userInput,
+                completed: false,
             };
 
-            const newList = [...list, userInputItem];
-            setList(newList);
-            setUserInput("");
-            toast.success("Item List inserted successfully");
+            axios.post("https://jsonplaceholder.typicode.com/todos", userInputItem)
+                .then(response => {
+                    const newItem = {
+                        id: response.data.id,
+                        value: response.data.title
+                    };
+                    setList([...list, newItem]);
+                    setUserInput("");
+                    toast.success("Data added successfully");
+                })
+                .catch(error => {
+                    console.error("Error adding data:", error);
+                });
         }
     };
 
-    const deleteItem = (key) => {
-        const updatedList = list.filter((item) => item.id !== key);
-        toast.error("Item List deleted successfully");
-        setList(updatedList);
+    const deleteItem = (id) => {
+        axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+            .then(() => {
+                const updatedList = list.filter((item) => item.id !== id);
+                toast.error("Data deleted successfully");
+                setList(updatedList);
+            })
+            .catch(error => {
+                console.error("Error deleting data:", error);
+            });
     };
 
     const editItem = (index) => {
         const todos = [...list];
-        const editedTodo = prompt("Edit the List:");
+        const editedTodo = prompt("Edit the list:", todos[index].value);
         if (editedTodo !== null && editedTodo.trim() !== "") {
-            let updatedTodos = [...todos];
-            updatedTodos[index].value = editedTodo;
-            toast.warning("Item List updated successfully");
-            setList(updatedTodos);
+            const updatedTodo = {
+                ...todos[index],
+                value: editedTodo,
+            };
+
+            axios.put(`https://jsonplaceholder.typicode.com/todos/${todos[index].id}`, { title: editedTodo })
+                .then(() => {
+                    let updatedTodos = [...todos];
+                    updatedTodos[index] = updatedTodo;
+                    toast.warning("Data updated successfully");
+                    setList(updatedTodos);
+                })
+                .catch(error => {
+                    console.error("Error updating data:", error);
+                });
         }
     };
 
     return (
         <Container>
-            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "3rem", fontWeight: "bolder", }}>
-                TODO LIST
+            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "2rem", fontWeight: "bolder", }}>
+                LIST
             </Row>
-
-            <hr />
 
             <Row>
                 <Col md={{ span: 5, offset: 4 }}>
@@ -69,7 +108,6 @@ const App = () => {
                     </InputGroup>
                 </Col>
             </Row>
-
             <Row>
                 <Col md={{ span: 5, offset: 4 }}>
                     <ListGroup>
@@ -96,4 +134,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default TodoList1;
