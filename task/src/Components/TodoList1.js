@@ -16,7 +16,7 @@ const TodoList1 = () => {
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        axios.get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+        axios.get("https://jsonplaceholder.typicode.com/todos?_limit=4")
             .then(response => {
                 const initialList = response.data.map(item => ({
                     id: item.id,
