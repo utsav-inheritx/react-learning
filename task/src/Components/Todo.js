@@ -51,8 +51,7 @@ const App = () => {
 
     return (
         <Container>
-            <Row
-                style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "3rem", fontWeight: "bolder", }}>
+            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "3rem", fontWeight: "bolder", }}>
                 TODO LIST
             </Row>
 
@@ -70,6 +69,7 @@ const App = () => {
                     </InputGroup>
                 </Col>
             </Row>
+
             <Row>
                 <Col md={{ span: 5, offset: 4 }}>
                     <ListGroup>
