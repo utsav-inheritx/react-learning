@@ -10,7 +10,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const App = () => {
+const TodoList = () => {
     const [userInput, setUserInput] = useState("");
     const [list, setList] = useState([]);
 
@@ -94,4 +94,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default TodoList;
