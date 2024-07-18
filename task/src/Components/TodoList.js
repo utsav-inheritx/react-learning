@@ -34,7 +34,7 @@ const TodoList = () => {
 
     const deleteItem = (key) => {
         const updatedList = list.filter((item) => item.id !== key);
-        toast.error("Data deleted successfully");
+        toast.success("Data deleted successfully");
         setList(updatedList);
     };
 
@@ -44,7 +44,7 @@ const TodoList = () => {
         if (editedTodo !== null && editedTodo.trim() !== "") {
             let updatedTodo = [...todos];
             updatedTodo[index].value = editedTodo;
-            toast.warning("Data updated successfully");
+            toast.success("Data updated successfully");
             setList(updatedTodo);
         }
     };

@@ -60,7 +60,7 @@ const TodoList1 = () => {
         axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
             .then(() => {
                 const updatedList = list.filter((item) => item.id !== id);
-                toast.error("Data deleted successfully");
+                toast.success("Data deleted successfully");
                 setList(updatedList);
             })
             .catch(error => {
@@ -81,7 +81,7 @@ const TodoList1 = () => {
                 .then(() => {
                     let updatedTodos = [...todos];
                     updatedTodos[index] = updatedTodo;
-                    toast.warning("Data updated successfully");
+                    toast.success("Data updated successfully");
                     setList(updatedTodos);
                 })
                 .catch(error => {
