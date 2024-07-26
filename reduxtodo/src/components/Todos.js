@@ -10,7 +10,7 @@ const Todos = () => {
 
     return (
         <>
-            <h3>Todos</h3>
+            <h3>Todos List</h3>
             <ul className="list-group">
                 {todos.map((todo) => (
                     <li className="list-group-item d-flex justify-content-between align-items-center" key={todo.id}>

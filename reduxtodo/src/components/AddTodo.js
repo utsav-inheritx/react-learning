@@ -20,7 +20,7 @@ const AddTodo = () => {
             <form onSubmit={addTodoHandler} className="d-flex mb-4">
                 <input type="text" className="form-control me-2" placeholder="Enter a Todo..." value={input} onChange={(e) => setInput(e.target.value)} />
                 <button type="submit" className="btn btn-primary">
-                    Add Todo
+                    Add
                 </button>
             </form>
         </>
