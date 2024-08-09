@@ -24,8 +24,7 @@ const Login = () => {
         </div>
         <div className="mb-3">
           <label>Password</label>
-          <input
-            type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
         <button type="button" className="btn btn-primary" onClick={handleLogin}>
           Login

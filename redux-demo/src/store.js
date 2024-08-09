@@ -1,22 +1,10 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+import userReducer from './userSlice';
 
-const initialState = {
-    user: JSON.parse(localStorage.getItem('user')) || null,
-};
-
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'LOGIN':
-            localStorage.setItem('user', JSON.stringify(action.payload));
-            return { ...state, user: action.payload };
-        case 'LOGOUT':
-            localStorage.removeItem('user');
-            return { ...state, user: null };
-        default:
-            return state;
-    }
-};
-
-const store = createStore(reducer);
+const store = configureStore({
+  reducer: {
+    user: userReducer,
+  },
+});
 
 export default store;
