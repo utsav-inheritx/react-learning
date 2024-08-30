@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const getRandomColor = () => {
@@ -13,32 +13,38 @@ const getRandomColor = () => {
 const Grid = () => {
   const [colors, setColors] = useState(Array(9).fill('#ffffff'));
   const [clickedOrder, setClickedOrder] = useState([]);
-  
-  useEffect(() => {
-    if (clickedOrder.length > 0) {
-      const timer = setTimeout(() => {
-        const indexToReset = clickedOrder[0];
-        const newColors = [...colors];
-        newColors[indexToReset] = '#ffffff';
-        setColors(newColors);
-        setClickedOrder(clickedOrder.slice(1));
-      }, 500);
-
-      return () => clearTimeout(timer);
-    }
-  }, [clickedOrder, colors]);
+  const [timerStarted, setTimerStarted] = useState(false);
 
   const handleClick = (index) => {
+    if (!timerStarted) {
+      setTimerStarted(true);
+      setTimeout(() => {
+        resetColorsStepByStep();
+      }, 5000);  // 5 seconds delay before starting the reset
+    }
+
     const newColors = [...colors];
     newColors[index] = getRandomColor();
     setColors(newColors);
 
-    setClickedOrder([...clickedOrder, index]);
+    const newOrder = [...clickedOrder];
+    newOrder.push(index);
+    setClickedOrder(newOrder);
+  };
 
-    if (clickedOrder.length === 0) {
+  const resetColorsStepByStep = () => {
+    if (clickedOrder.length === 0) return;
+
+    const [first, ...rest] = clickedOrder;
+    const newColors = [...colors];
+    newColors[first] = '#ffffff';
+    setColors(newColors);
+    setClickedOrder(rest);
+
+    if (rest.length > 0) {
       setTimeout(() => {
-        setClickedOrder([...clickedOrder]);
-      }, 5000);
+        resetColorsStepByStep();
+      }, 500);  // 0.5 seconds delay between each reset
     }
   };
 
